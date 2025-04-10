@@ -26,16 +26,13 @@ if "file_uploaded" not in st.session_state:
 # File Uploader (PDF and Excel only)
 uploaded_file = st.file_uploader(
     "Upload PDF or Excel file",
-    type=[ "xlsx"] 
-     #"pdf",
-   
-    )
+    type=[ "xlsx","pdf","CSV","MP3","mp4"]#"pdf",
+)
 
 file_text = ""
 
 if uploaded_file and not st.session_state.file_uploaded:
-    file_type = uploaded_file.file_type
-    
+    file_type = uploaded_file.type
 
     with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
         tmp_file.write(uploaded_file.read())
